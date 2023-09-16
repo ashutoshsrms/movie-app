@@ -14,7 +14,11 @@ const movieSchema = new mongoose.Schema({
   critic_rating: { type: Number },
   trailer_url: { type: String },
   wiki_url: { type: String },
-  story_line: { type: String }
+  story_line: { type: String },
+  shows: {
+    type: [Object], // Array of objects
+    default: []
+  }
 });
 
 const Movie = mongoose.model('movies', movieSchema);

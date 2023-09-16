@@ -5,7 +5,6 @@ const findAllMovies = async (req, res) => {
     const status = req.query.status || '';
     const query = {};
 
-
     if (status == 'published') {
       query.published = true;
     } else if (status == 'released') {
@@ -27,6 +26,7 @@ const findAllMovies = async (req, res) => {
 
 const findOne = async (req, res) => {
   try {
+    
     const movieId = req.params.id;
     const movie = await Movie.findById(movieId);
     if (!movie) {
@@ -42,6 +42,7 @@ const findOne = async (req, res) => {
 const findShows = async (req, res) => {
   try {
     const movieId = req.params.id;
+    console.log("hi")
     const movie = await Movie.findById(movieId);
 
     if (!movie) {
@@ -49,6 +50,8 @@ const findShows = async (req, res) => {
     }
 
     const shows = movie.shows;
+    console.log(movie);
+    console.log(shows);
     res.status(200).json(shows);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
