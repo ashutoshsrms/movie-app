@@ -1,4 +1,4 @@
-
+const User = require('../../models/user.model');
 const getCouponCode = async (req, res) => {
     try {
       const userId = req.userId; // User ID from the authentication middleware
