@@ -42,7 +42,6 @@ const findOne = async (req, res) => {
 const findShows = async (req, res) => {
   try {
     const movieId = req.params.id;
-    console.log("hi")
     const movie = await Movie.findById(movieId);
 
     if (!movie) {

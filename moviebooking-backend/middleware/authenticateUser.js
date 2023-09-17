@@ -1,16 +1,15 @@
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../../config/config');
+const { JWT_SECRET } = require('../config/config');
 
 const authenticateToken = (req, res, next) => {
-  const token = req.header('Authorization'); // Assuming token is passed in the Authorization header
-
+  const token = req.header('Authorization'); 
   if (!token) {
     return res.status(401).json({ message: 'No token provided' });
   }
 
   try {
     const decodedToken = jwt.verify(token, JWT_SECRET);
-    req.user = decodedToken.userId; // Attach the user ID to the request
+    req.user = decodedToken.userId; 
     next();
   } catch (err) {
     return res.status(403).json({ message: 'Invalid token' });
